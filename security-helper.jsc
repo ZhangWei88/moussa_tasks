@@ -1,0 +1,492 @@
+function func_unknown()
+{
+	r0 = func_unknown_000003B5FE41DD69
+	return func_unknown_000003B5FE41DD69
+}
+function func_unknown_000003B5FE41DD69(a0, a1, a2, a3, a4)
+{
+	r3 = Scope[0]
+	Scope[1][2] = null
+	Scope[1][3] = null
+	Scope[1][4] = null
+	Scope[1][5] = null
+	Scope[1][6] = null
+	Scope[1][7] = null
+	Scope[1][8] = func_decodeLicense_000003B5FE41E119
+	Scope[1][9] = func_decryptLicense_000003B5FE41ED91
+	Scope[1][10] = func__getLicense_000003B5FE41F5C9
+	Scope[1][11] = func_scheduleCheck_000003B5FE420969
+	Scope[1][2] = a1("fs")
+	Scope[1][3] = a1("crypto")
+	Scope[1][4] = a1("node-fetch")
+	r4 = a1("./../utils/node-machine-id")
+	Scope[1][5] = r4["machineIdSync"]
+	Scope[1][6] = {}
+	Scope[1][7] = null
+	r5 = new {"init": null, "getLicense": null, "getLicenseExpirationDate": null}
+	r5["init"] = func_init_000003B5FE41F149
+	r5["getLicense"] = func_getLicense_000003B5FE420DB1
+	r5["getLicenseExpirationDate"] = func_getLicenseExpirationDate_000003B5FE420EC9
+	a2["exports"] = r5
+	return undefined
+}
+function func_getLicenseExpirationDate_000003B5FE420EC9()
+{
+	return Scope[1][7]
+}
+function func_getLicense_000003B5FE420DB1()
+{
+	return Scope[1][6]
+}
+function func_scheduleCheck_000003B5FE420969(a0)
+{
+	r0 = "Date"(r0)
+	r1 = 86400000
+	if (a0)
+	{
+		r3 = a0["getTime"]()
+		r2 = (r3 - r0["getTime"]())
+		if (r2 < 86400000)
+		{
+			r1 = (r2 + 1000)
+		}
+	}
+	ACCU = "setTimeout"(func_unknown_000003B5FE420A71, r1)
+	return undefined
+}
+function func_unknown_000003B5FE420A71()
+{
+	r2 = <closure>
+	r3 = <this>
+	r0 = ACCU
+	r2 = <context>
+	try
+	{
+		r4 = Scope[1][10]()
+		r3 = r0
+		r3 = await r4
+		r4 = _GeneratorGetResumeMode(r0)
+		if (!r4 === 0)
+		{
+			ACCU = r3
+		}
+		r1 = r3
+		if (!r1)
+		{
+			ACCU = "process"["exit"](1)
+		}
+		if (!r1["valid"])
+		{
+			ACCU = "process"["exit"](1)
+		}
+		ACCU = Scope[1][7]
+		Scope[1][7] = r1["validTo"]
+		ACCU = Scope[1][11](r1["validTo"])
+		r4 = undefined
+		r3 = r0
+		return r4
+	}
+	catch {}
+	r3 = ACCU
+	ACCU = null
+	r3 = Scope[1]
+	r4 = r0
+	return Scope[2][2]
+}
+function func__getLicense_000003B5FE41F5C9()
+{
+	r21 = <closure>
+	r22 = <this>
+	r0 = ACCU
+	r21 = <context>
+	try
+	{
+		ACCU = new {"valid": <false, "code": 5000}
+		r1 = new {"valid": <false, "code": 5000}
+		r22 = <context>
+		try
+		{
+			r23 = Scope[1][2]["existsSync"]
+			ACCU = Scope[1][2]["existsSync"]("./CORE.license")
+			if (!Scope[1][2]["existsSync"]("./CORE.license"))
+			{
+				r1["code"] = 6001
+				r23 = r0
+				r24 = r1
+				return r24
+				r1["code"] = 5001
+				r24 = Scope[1][8]("./CORE.license")
+				r23 = r0
+				r23 = await r24
+				r24 = _GeneratorGetResumeMode(r0)
+				if (!r24 === 0)
+				{
+					ACCU = r23
+					r6 = r23
+					if (!r6)
+					{
+						r1["code"] = 6002
+						r23 = r0
+						r24 = r1
+						return r24
+						r1["code"] = 5002
+						r24 = Scope[1][3]["randomBytes"](20)
+						r7 = r24["toString"]("hex")
+						r1["code"] = 5003
+						r26 = new {"modulusLength": 4096, "publicKeyEncoding": {"type": "spki", "format": "pem"}, "privateKeyEncoding": null}
+						r27 = new {"type": "pkcs8", "format": "pem", "cipher": "aes-256-cbc", "passphrase": null}
+						r27["passphrase"] = r7
+						r26["privateKeyEncoding"] = r27
+						r23 = Scope[1][3]["generateKeyPairSync"]("rsa", r26)
+						r9 = r23["privateKey"]
+						r1["code"] = 5004
+						r24 = "Buffer"["from"](r23["publicKey"])
+						r10 = r24["toString"]("base64")
+						r1["code"] = 5005
+						r25 = "Math"["random"]()
+						r24 = r25["toString"](36)
+						r23 = r24["substr"](2, 5)
+						r26 = r10["split"]("")
+						r25 = r26["reverse"]()
+						r24 = r25["join"]
+						r11 = (r23 + r25["join"](""))
+						r1["code"] = 5006
+						r12 = 5
+						r13 = undefined
+						r19 = 0
+						r2 = 0
+						r3 = 1
+						while (true)
+						{
+							r20 = r2
+							if (r3 == 1)
+							{
+								r3 = 0
+							}
+							else
+							{
+								r20 = (r20 + 1)
+								r4 = 1
+								if (r20 <= r12)
+								{
+									break
+									while (true)
+									{
+										if (!r4 == 1) continue
+										r23 = <context>
+										try
+										{
+											r26 = new {"method": "POST", "body": null, "headers": {"Content-type": "text/plain"}}
+											r26["body"] = r11
+											r25 = Scope[1][4](r6["url"], r26)
+											r24 = r0
+											r24 = await r25
+											r25 = _GeneratorGetResumeMode(r0)
+											ACCU = r25 === 0
+											if (!r25 === 0)
+											{
+												ACCU = r24
+												r13 = r24
+												ACCU = r13
+												continue
+											}
+											catch {}
+											r24 = ACCU
+											r23 = Scope[1]
+											ACCU = null
+											r24 = Scope[1]
+											if (r20 == r12)
+											{
+												r1["code"] = 6101
+												r1["error"] = Scope[3][2]
+												r25 = r0
+												r26 = r1
+												return r26
+												ACCU = "Promise"
+												r26 = "Promise"(func_unknown_000003B5FE4201D9)
+												r25 = r0
+												r25 = await r26
+												r26 = _GeneratorGetResumeMode(r0)
+												if (!r26 === 0)
+												{
+													ACCU = r25
+													ACCU = Scope[1]
+													r2 = r20
+													ACCU = r2
+													if (!0 == 1) continue
+													break
+													if (!r13)
+													{
+														r1["code"] = 6003
+														r23 = r0
+														r24 = r1
+														return r24
+														r1["code"] = 5007
+														r24 = r13["text"]()
+														r23 = r0
+														r23 = await r24
+														r24 = _GeneratorGetResumeMode(r0)
+														if (!r24 === 0)
+														{
+															ACCU = r23
+															r14 = r23
+															if (!r14)
+															{
+																r1["code"] = 6004
+																r23 = r0
+																r24 = r1
+																return r24
+																r1["code"] = 5008
+																r25 = new {"key": null, "passphrase": null}
+																r25["key"] = r9
+																r25["passphrase"] = r7
+																r26 = "Buffer"["from"](r14, "base64")
+																r15 = Scope[1][3]["privateDecrypt"](r25, r26)
+																if (!Scope[1][3]["privateDecrypt"](r25, r26))
+																{
+																	r1["code"] = 6005
+																	r23 = r0
+																	r24 = r1
+																	return r24
+																	r1["code"] = 5009
+																	r24 = "Buffer"["from"](r15)
+																	r16 = r24["toString"]()
+																	if (!r24["toString"]())
+																	{
+																		r1["code"] = 6006
+																		r23 = r0
+																		r24 = r1
+																		return r24
+																		r1["code"] = 5010
+																		r17 = "JSON"["parse"](r16)
+																		if (!"JSON"["parse"](r16))
+																		{
+																			r1["code"] = 6007
+																			r23 = r0
+																			r24 = r1
+																			return r24
+																			r1["code"] = 5011
+																			if (!r17["valid"])
+																			{
+																				r1["code"] = 6102
+																				r23 = r0
+																				r24 = r1
+																				return r24
+																				r1["code"] = 5012
+																				r27 = new [50, 109, 65, 42, 67, 102, 121, 103, 53, 67, 104, 114, 55, 121, 99, 83, 103, 67, 83, 100, 115, 38, 83, 117, 121, 50, 67, 117, 85, 88, 75, 37, 38, 53, 35, 72, 65, 69, 122, 102, 64, 104, 84, 103, 107, 99, 83, 113, 83, 117, 94, 56, 88, 118, 51, 51, 110, 37, 54, 38]
+																				r25 = "Buffer"["from"](r27)
+																				if (!r17["checksum"] == r25["toString"]("ascii"))
+																				{
+																					r1["code"] = 6103
+																					r23 = r0
+																					r24 = r1
+																					return r24
+																					r1["code"] = 5013
+																					if (r17["validTo"])
+																					{
+																						r25 = "Date"["parse"](r17["validTo"])
+																						ACCU = "Date"
+																						r1["validTo"] = "Date"(r25)
+																						if (r1["validTo"] > "Date"(r0))
+																						{
+																							r1["valid"] = true
+																						}
+																						else
+																						{
+																							r1["code"] = 6104
+																							r23 = r0
+																							r24 = r1
+																							return r24
+																						}
+																						else
+																						{
+																							r1["valid"] = true
+																							r1["code"] = 5014
+																							r1["data"] = new {"calls_limit": 1000}
+																							r1["code"] = 5015
+																							if (r17["data"])
+																							{
+																								r18 = "JSON"["parse"](r17["data"])
+																								if ("JSON"["parse"](r17["data"]))
+																								{
+																									if (r18["calls_limit"])
+																									{
+																										r1["data"]["calls_limit"] = r18["calls_limit"]
+																										if (r18["allow_change_listener_ip"])
+																										{
+																											r1["data"]["allow_change_listener_ip"] = r18["allow_change_listener_ip"]
+																											r1["code"] = 5016
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		catch
+		{
+			r23 = ACCU
+			ACCU = null
+			r23 = Scope[1]
+			r1["code"] = 6999
+			r1["error"] = Scope[4][2]
+			ACCU = Scope[1]
+		}
+		r22 = r0
+		r23 = r1
+		return r23
+	}
+	catch {}
+	r22 = ACCU
+	ACCU = null
+	r22 = Scope[1]
+	r23 = r0
+	return Scope[5][2]
+}
+function func_unknown_000003B5FE4201D9(a0)
+{
+	return "setTimeout"(a0, 60000)
+}
+function func_init_000003B5FE41F149()
+{
+	r2 = <closure>
+	r3 = <this>
+	r0 = ACCU
+	r2 = <context>
+	try
+	{
+		r4 = Scope[1][10]()
+		r3 = r0
+		r3 = await r4
+		r4 = _GeneratorGetResumeMode(r0)
+		if (!r4 === 0)
+		{
+			ACCU = r3
+		}
+		r1 = r3
+		if (r1)
+		{
+			if (r1["valid"])
+			{
+				ACCU = Scope[1][7]
+				Scope[1][7] = r1["validTo"]
+				if (r1["data"])
+				{
+					r7 = new {"value": null, "writable": <false, "enumerable": <false, "configurable": <false}
+					r7["value"] = r1["data"]["calls_limit"]
+					ACCU = "Object"["defineProperty"](Scope[1][6], "calls_limit", r7)
+					r7 = new {"value": null, "writable": <false, "enumerable": <false, "configurable": <false}
+					r7["value"] = r1["data"]["allow_change_listener_ip"]
+					ACCU = "Object"["defineProperty"](Scope[1][6], "allow_change_listener_ip", r7)
+				}
+				ACCU = "Object"["freeze"](Scope[1][6])
+				ACCU = Scope[1][11](r1["validTo"])
+			}
+		}
+		r3 = r0
+		r4 = r1
+		return r4
+	}
+	catch {}
+	r3 = ACCU
+	ACCU = null
+	r3 = Scope[1]
+	r4 = r0
+	return Scope[6][2]
+}
+function func_decryptLicense_000003B5FE41ED91(a0, a1)
+{
+	r15 = "String"(a0)
+	r0 = "Buffer"["from"](r15, "hex")
+	r7 = r0["slice"](0, 64)
+	r8 = r0["slice"](64, (64 + 16))
+	r9 = r0["slice"]((64 + 16), ((64 + 16) + 16))
+	r10 = r0["slice"](((64 + 16) + 16))
+	r15 = a1
+	r16 = r7
+	r11 = Scope[1][3]["pbkdf2Sync"](r15, r16, 100000, 32, "sha512")
+	r16 = r11
+	r17 = r8
+	r12 = Scope[1][3]["createDecipheriv"]("aes-256-gcm", r16, r17)
+	ACCU = r12["setAuthTag"](r9)
+	r13 = r12["update"](r10)
+	return (r13 + r12["final"]("utf8"))
+}
+function func_decodeLicense_000003B5FE41E119(a0)
+{
+	r7 = <closure>
+	r8 = <this>
+	r0 = ACCU
+	r7 = <context>
+	try
+	{
+		r8 = <context>
+		try
+		{
+			if (!Scope[1][2]["existsSync"](a0))
+			{
+				r9 = r0
+				return false
+				r3 = Scope[1][5]()
+				r4 = Scope[1][2]["readFileSync"](a0)
+				r5 = Scope[1][9](r4, r3)
+				r14 = new {"key": null, "passphrase": null}
+				r14["key"] = "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAspsRKzrz+v1ff+LrF5Ho\n/JPf3Yb6UFhLabhlV4TXjyRxX96iyJ7EzJPqu2Wmi+kRGqjcS1sbGPsM0fG2hy1J\nJBunEKJsdFGkkGUKo6BaWUdtmSTUcQTUdWs1978GBe9IfGq7rKvteS9kN9MEYEx9\nVSV00ozl50ZNAhH5ylueF9KNg+2UfpHXxOGAwLVwzJ6UtMovgqK91bgH0Mq6CWQl\n44qE4UZ1lJgetnYXws8s+0X3h/z8dGnGkOCI1Ahf0xt/JNE8hpYMCDoGtaluZ1rb\nZv8OAoV+XJ5VZllaW3NBtiLuDBIbJBLUuIeK4AiQLH0ugwzrFjERVNRRpiN+O7z1\nzhlQPadNq5ELz8eBp89ck1GvODPpR1RyBkKtZ9G+eQrOvp+mMY4GqF6FJbzVUgdo\nsnRH/5fsyBgSCCCPa0MqmTzr/kW1Uf7uaMD0NESGdxLs+96JISWz20097ofCGmEd\n0lM2LbLk+t70dNGeWx1FH7ebUNLyD9Yag6fnGkVG1NoLDZjpGBx9fIka4tE6mPHg\ndeBd6py5JC94L9ZhHS9zdjNkm3rSs4MoJD6PbWA5rDWC6oqx7UpG/+3kbksxlJEY\nWiHVph7+G5JrG0M/+TiwhomZ6CNapO/pRpta7j0ITg33X2F5pkk04ebPu2dsEAdC\n0bdlyyepa3qSBQ7wubUYUmkCAwEAAQ==\n-----END PUBLIC KEY-----"
+				r14["passphrase"] = "6$2#jN322xX*cWrYaGDQ$uFUbV3XSKfn*TaM4mYQtXs69YEy7Q7qkDy@@c%SH3qh58%4xD4YTq4#Uc$w@J4hr9jM!k!X7Ws5Sud97HC%2^Xf6X&%V3vs86&aJj^4RP3b7WYywr%*Hpurb3EK3k5G%Dw54ZC7u@a7"
+				r15 = "Buffer"["from"](r5, "base64")
+				r12 = Scope[1][3]["publicDecrypt"](r14, r15)
+				r11 = r12["toString"]("utf-8")
+				r6 = "JSON"["parse"](r11)
+				if ("JSON"["parse"](r11))
+				{
+					r9 = new {"owner": null, "crmId": null, "edition": null, "application": null, "url": null, "failoverUrl": null, "created": null, "created_by": null}
+					r9["owner"] = r6["owner"]
+					r9["crmId"] = r6["crm_id"]
+					r9["edition"] = r6["edition"]
+					r9["application"] = r6["application"]
+					r9["url"] = r6["url"]
+					r9["failoverUrl"] = r6["failover_url"]
+					r9["created"] = r6["created"]
+					r9["created_by"] = r6["created_by"]
+					r10 = r9
+					r9 = r0
+					return r10
+				}
+			}
+		}
+		catch
+		{
+			r9 = ACCU
+			ACCU = null
+			r9 = Scope[1]
+			ACCU = Scope[1]
+		}
+		r9 = undefined
+		r8 = r0
+		return r9
+	}
+	catch {}
+	r8 = ACCU
+	ACCU = null
+	r8 = Scope[1]
+	r9 = r0
+	return Scope[8][2]
+}

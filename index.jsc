@@ -1,0 +1,494 @@
+function func_unknown()
+{
+	r0 = func_unknown_000003619F95DD69
+	return func_unknown_000003619F95DD69
+}
+function func_unknown_000003619F95DD69(a0, a1, a2, a3, a4)
+{
+	r2 = Scope[0]
+	Scope[1][2] = a1
+	Scope[1][3] = null
+	Scope[1][4] = null
+	Scope[1][5] = null
+	Scope[1][6] = null
+	Scope[1][7] = null
+	Scope[1][8] = null
+	Scope[1][9] = null
+	Scope[1][10] = null
+	Scope[1][11] = null
+	Scope[1][12] = null
+	Scope[1][13] = null
+	Scope[1][14] = null
+	Scope[1][15] = null
+	Scope[1][16] = null
+	Scope[1][17] = null
+	Scope[1][18] = null
+	Scope[1][19] = null
+	Scope[1][20] = null
+	Scope[1][21] = null
+	Scope[1][22] = null
+	Scope[1][23] = func_shutdown_000003619F95E5A9
+	Scope[1][24] = func_cleanup_000003619F960DF9
+	r0 = Scope[1][2]("regenerator-runtime")
+	r4 = Scope[1][2]("./config/app-config")
+	Scope[1][3] = r4["get"]()
+	Scope[1][4] = Scope[1][2]("./version")
+	Scope[1][5] = Scope[1][2]("./server/core")
+	Scope[1][6] = Scope[1][2]("./server/socket")
+	Scope[1][7] = Scope[1][2]("./server/udp-socket")
+	Scope[1][8] = Scope[1][2]("./server/callback-tasks-cron")
+	Scope[1][9] = Scope[1][2]("./server/maintenance-cron")
+	Scope[1][10] = Scope[1][2]("./server/smtp")
+	Scope[1][11] = Scope[1][2]("./server/smpp")
+	Scope[1][12] = Scope[1][2]("./utils/google-services-helper")
+	Scope[1][13] = Scope[1][2]("./utils/ai-services-helper")
+	Scope[1][14] = Scope[1][2]("./utils/security-helper")
+	Scope[1][15] = Scope[1][2]("./utils/logger")
+	Scope[1][16] = Scope[1][2]("./utils/push-broker")
+	Scope[1][17] = Scope[1][2]("./utils/cdr-helper")
+	Scope[1][18] = Scope[1][2]("./utils/db-helper")
+	Scope[1][19] = Scope[1][2]("./utils/app-helper")
+	r3 = Scope[1][2]("./utils/thread-pool-manager")
+	Scope[1][20] = r3["ThreadPoolManager"]
+	Scope[1][21] = r3["ThreadPoolWorkers"]
+	r3 = Scope[1]
+	r5 = DefineClass([4, <DescriptorArray[4], <NumberDictionary[7], [], <DescriptorArray[2], <NumberDictionary[7], []], func_Service_000003619F95ECE1, null, func_start_000003619F95F6D1)
+	ACCU = Scope[1]
+	r4 = "process"["on"]("unhandledRejection", func_unknown_000003619F9607F1)
+	ACCU = r4["on"]("uncaughtException", func_unknown_000003619F960991)
+	r4 = "process"["once"]("SIGINT", func_unknown_000003619F960B01)
+	ACCU = r4["once"]("SIGTERM", func_unknown_000003619F960CC1)
+	Scope[1][22] = false
+	ACCU = func_Service_000003619F95ECE1
+	r5 = func_Service_000003619F95ECE1(r0)
+	a2["exports"] = r5["start"]()
+	return undefined
+}
+function func_unknown_000003619F960CC1()
+{
+	ACCU = Scope[1][23]("SIGTERM")
+	return undefined
+}
+function func_unknown_000003619F960B01()
+{
+	r1 = <closure>
+	r2 = <this>
+	r0 = ACCU
+	r1 = <context>
+	try
+	{
+		ACCU = Scope[1][23]("SIGINT")
+		r3 = undefined
+		r2 = r0
+		return r3
+	}
+	catch {}
+	r2 = ACCU
+	ACCU = null
+	r2 = Scope[1]
+	r3 = r0
+	return Scope[3][2]
+}
+function func_unknown_000003619F960991(a0)
+{
+	r2 = a0
+	ACCU = Scope[1][15]["logError"](r2, "OTHER", "Uncaught exception")
+	return undefined
+}
+function func_unknown_000003619F9607F1(a0)
+{
+	r2 = a0
+	ACCU = Scope[1][15]["logError"](r2, "OTHER", "Unhandled rejection")
+	return undefined
+}
+function func_start_000003619F95F6D1()
+{
+	r5 = <closure>
+	r6 = <this>
+	r0 = ACCU
+	r5 = <context>
+	try
+	{
+		r7 = "process"["argv"]["slice"](2)
+		ACCU = r7["join"]("")
+		if (!r7["join"](""))
+		{
+			ACCU = ""
+		}
+		r1 = ACCU
+		ACCU = Scope[1][15]["setLogLevel"](Scope[1][3]["logs"]["level"])
+		r8 = new {"message": "VoipSwitch VS-CORE-SRV starting...", "data": null}
+		r8["data"] = "JSON"["stringify"](r1)
+		ACCU = Scope[1][15]["forced"]["info"](r8)
+		r7 = Scope[1][14]["init"]()
+		r6 = r0
+		r6 = await r7
+		r7 = _GeneratorGetResumeMode(r0)
+		if (!r7 === 0)
+		{
+			ACCU = r6
+		}
+		r2 = r6
+		if (r6["valid"])
+		{
+			r6 = Scope[1][3]["argv"]
+			if (Scope[1][3]["argv"]["process-offline-cdr"])
+			{
+				r8 = new {"message": "VoipSwitch VS-CORE-SRV started!"}
+				ACCU = Scope[1][15]["forced"]["info"](r8)
+				ACCU = Scope[1][3]["argv"]["path"]
+				if (!Scope[1][3]["argv"]["path"])
+				{
+					r6 = String(Scope[1][3]["docker"]["volume_path"])
+					ACCU = (r6 + "/cdr")
+				}
+				r3 = ACCU
+				ACCU = Scope[1][3]["argv"]["remove"]
+				if (!Scope[1][3]["argv"]["remove"])
+				{
+					ACCU = false
+				}
+				r4 = ACCU
+				r7 = Scope[1][17]["processOffline"](r3, r4)
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r6 = "process"["exit"]
+				ACCU = "process"["exit"](0)
+			}
+			else
+			{
+				"process"["env"]["NODE_TLS_REJECT_UNAUTHORIZED"] = 0
+				r7 = Scope[1][18]["checkConnection"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][18]["checkVersion"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][19]["setUpEnvironment"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r9 = new [0]
+				r9[0] = Scope[1][21]["DialingPlanWorker"]
+				r7 = Scope[1][20]["initPools"](r9)
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][5]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][19]["waitUntilEnvironmentIsReady"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][18]["setupHeartbeat"](true)
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][6]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][8]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][9]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][16]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][7]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][10]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][11]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][12]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][13]["init"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r7 = Scope[1][19]["finishEnvironmentStartUp"]()
+				r6 = r0
+				r6 = await r7
+				r7 = _GeneratorGetResumeMode(r0)
+				if (!r7 === 0)
+				{
+					ACCU = r6
+				}
+				r8 = new {"message": "VoipSwitch VS-CORE-SRV started!"}
+				ACCU = Scope[1][15]["forced"]["info"](r8)
+			}
+		}
+		else
+		{
+			r8 = ("To use VoipSwitch VS-CORE-SRV a hardware locked license file is required. [" + String(r2["code"]))
+			r8 = (r8 + "]")
+			ACCU = "console"["log"](r8)
+			r10 = Scope[1][2]("./utils/node-machine-id")
+			r8 = ("Your HardwareId is:" + String(r10["machineIdSync"]()))
+			ACCU = "console"["log"](r8)
+			if (r1["includes"]("--show-license-error"))
+			{
+				if (r2["error"])
+				{
+					r8 = ("ERROR:" + String(r2["error"]))
+					ACCU = "console"["log"](r8)
+				}
+			}
+			ACCU = "process"["exit"](1)
+		}
+		r7 = undefined
+		r6 = r0
+		return r7
+	}
+	catch {}
+	r6 = ACCU
+	ACCU = null
+	r6 = Scope[2]
+	r7 = r0
+	return Scope[4][2]
+}
+function func_Service_000003619F95ECE1()
+{
+	if (Scope[1][3]["argv"]["version"])
+	{
+		r2 = String(Scope[1][4]["version"])
+		r2 = (r2 + ".")
+		r2 = (r2 + String(Scope[1][4]["number"]))
+		r2 = (r2 + " [")
+		r2 = (r2 + String(Scope[1][4]["commit"]))
+		r2 = (r2 + "] [")
+		r2 = (r2 + String(Scope[1][4]["timestamp"]))
+		r2 = (r2 + "]")
+		ACCU = "console"["log"](r2)
+		ACCU = "process"["exit"](0)
+	}
+	ACCU = "console"["log"]("")
+	ACCU = "console"["log"]("")
+	ACCU = "console"["log"]("    \x2588\x2588\x2557   \x2588\x2588\x2557\x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557       \x2588\x2588\x2588\x2588\x2588\x2588\x2557 \x2588\x2588\x2588\x2588\x2588\x2588\x2557 \x2588\x2588\x2588\x2588\x2588\x2588\x2557 \x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557      \x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557\x2588\x2588\x2588\x2588\x2588\x2588\x2557 \x2588\x2588\x2557   \x2588\x2588\x2557")
+	ACCU = "console"["log"]("    \x2588\x2588\x2551   \x2588\x2588\x2551\x2588\x2588\x2554\x2550\x2550\x2550\x2550\x255d      \x2588\x2588\x2554\x2550\x2550\x2550\x2550\x255d\x2588\x2588\x2554\x2550\x2550\x2550\x2588\x2588\x2557\x2588\x2588\x2554\x2550\x2550\x2588\x2588\x2557\x2588\x2588\x2554\x2550\x2550\x2550\x2550\x255d      \x2588\x2588\x2554\x2550\x2550\x2550\x2550\x255d\x2588\x2588\x2554\x2550\x2550\x2588\x2588\x2557\x2588\x2588\x2551   \x2588\x2588\x2551")
+	ACCU = "console"["log"]("    \x2588\x2588\x2551   \x2588\x2588\x2551\x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557\x2588\x2588\x2588\x2588\x2588\x2557\x2588\x2588\x2551     \x2588\x2588\x2551   \x2588\x2588\x2551\x2588\x2588\x2588\x2588\x2588\x2588\x2554\x255d\x2588\x2588\x2588\x2588\x2588\x2557  \x2588\x2588\x2588\x2588\x2588\x2557\x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557\x2588\x2588\x2588\x2588\x2588\x2588\x2554\x255d\x2588\x2588\x2551   \x2588\x2588\x2551")
+	ACCU = "console"["log"]("    \x255a\x2588\x2588\x2557 \x2588\x2588\x2554\x255d\x255a\x2550\x2550\x2550\x2550\x2588\x2588\x2551\x255a\x2550\x2550\x2550\x2550\x255d\x2588\x2588\x2551     \x2588\x2588\x2551   \x2588\x2588\x2551\x2588\x2588\x2554\x2550\x2550\x2588\x2588\x2557\x2588\x2588\x2554\x2550\x2550\x255d  \x255a\x2550\x2550\x2550\x2550\x255d\x255a\x2550\x2550\x2550\x2550\x2588\x2588\x2551\x2588\x2588\x2554\x2550\x2550\x2588\x2588\x2557\x255a\x2588\x2588\x2557 \x2588\x2588\x2554\x255d")
+	ACCU = "console"["log"]("     \x255a\x2588\x2588\x2588\x2588\x2554\x255d \x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2551      \x255a\x2588\x2588\x2588\x2588\x2588\x2588\x2557\x255a\x2588\x2588\x2588\x2588\x2588\x2588\x2554\x255d\x2588\x2588\x2551  \x2588\x2588\x2551\x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2557      \x2588\x2588\x2588\x2588\x2588\x2588\x2588\x2551\x2588\x2588\x2551  \x2588\x2588\x2551 \x255a\x2588\x2588\x2588\x2588\x2554\x255d")
+	ACCU = "console"["log"]("      \x255a\x2550\x2550\x2550\x255d  \x255a\x2550\x2550\x2550\x2550\x2550\x2550\x255d       \x255a\x2550\x2550\x2550\x2550\x2550\x255d \x255a\x2550\x2550\x2550\x2550\x2550\x255d \x255a\x2550\x255d  \x255a\x2550\x255d\x255a\x2550\x2550\x2550\x2550\x2550\x2550\x255d      \x255a\x2550\x2550\x2550\x2550\x2550\x2550\x255d\x255a\x2550\x255d  \x255a\x2550\x255d  \x255a\x2550\x2550\x2550\x255d")
+	r3 = ("VoipSwitch CORE service" + String(Scope[1][4]["version"]))
+	r3 = (r3 + ".")
+	r3 = (r3 + String(Scope[1][4]["number"]))
+	r3 = (r3 + " [")
+	r3 = (r3 + String(Scope[1][4]["commit"]))
+	r3 = (r3 + "]")
+	r2 = r3["padStart"](91, "")
+	ACCU = "console"["log"](r2)
+	ACCU = "console"["log"]("")
+	ACCU = "console"["log"]("")
+	return undefined
+}
+function func_cleanup_000003619F960DF9()
+{
+	r2 = <closure>
+	r3 = <this>
+	r0 = ACCU
+	r2 = <context>
+	try
+	{
+		ACCU = []
+		r1 = []
+		r3 = <context>
+		try
+		{
+			r5 = Scope[1][18]["setupHeartbeat"](false)
+			r4 = r0
+			r4 = await r5
+			r5 = _GeneratorGetResumeMode(r0)
+			ACCU = r5 === 0
+			if (!r5 === 0)
+			{
+				ACCU = r4
+				ACCU = r4
+			}
+		}
+		catch
+		{
+			r4 = ACCU
+			ACCU = null
+			r4 = Scope[1]
+			r8 = ("STOP database heartbeat failed! ERROR:" + String(Scope[5][2]["message"]))
+			ACCU = "Error"
+			r7 = "Error"(r8)
+			ACCU = r1["push"](r7)
+			ACCU = Scope[1]
+		}
+		if (r1["length"])
+		{
+			ACCU = "AggregateError"
+			r4 = r1
+			ACCU = "AggregateError"(r4, "Shutdown cleanup steps failed!")
+		}
+		r4 = undefined
+		r3 = r0
+		return r4
+	}
+	catch {}
+	r3 = ACCU
+	ACCU = null
+	r3 = Scope[1]
+	r4 = r0
+	return Scope[6][2]
+}
+function func_shutdown_000003619F95E5A9(a0)
+{
+	r1 = <closure>
+	r2 = <this>
+	r0 = ACCU
+	r1 = <context>
+	try
+	{
+		if (Scope[1][22])
+		{
+			ACCU = "process"["exit"](1)
+		}
+		ACCU = Scope[1][22]
+		ACCU = true
+		Scope[1][22] = true
+		r2 = <context>
+		try
+		{
+			r3 = Scope[1]
+			Scope[7][2] = null
+			r6 = ("VoipSwitch CORE-SRV has terminated on [" + String(a0))
+			r6 = (r6 + " ].")
+			ACCU = Scope[1][15]["default"]["warn"](r6)
+			Scope[7][2] = 10000
+			r7 = new [0, 0]
+			r7[0] = Scope[1][24]()
+			ACCU = "Promise"
+			r7[1] = "Promise"(func_unknown_000003619F95E909)
+			r5 = "Promise"["race"](r7)
+			r4 = r0
+			r4 = await r5
+			r5 = _GeneratorGetResumeMode(r0)
+			ACCU = r5 === 0
+			if (!r5 === 0)
+			{
+				ACCU = r4
+				ACCU = "process"["exit"](0)
+				ACCU = Scope[1]
+			}
+		}
+		catch
+		{
+			r4 = ACCU
+			ACCU = null
+			r4 = Scope[1]
+			ACCU = "process"["exit"](1)
+			ACCU = Scope[1]
+		}
+		r3 = undefined
+		r2 = r0
+		return r3
+	}
+	catch {}
+	r2 = ACCU
+	ACCU = null
+	r2 = Scope[1]
+	r3 = r0
+	return Scope[9][2]
+}
+function func_unknown_000003619F95E909(a0, a1)
+{
+	r0 = Scope[7]
+	Scope[10][2] = a1
+	return "setTimeout"(func_unknown_000003619F95EA49, Scope[7][2])
+}
+function func_unknown_000003619F95EA49()
+{
+	ACCU = "Error"
+	r1 = "Error"("Shutdown cleanup timeout occurred!")
+	return Scope[10][2](r1)
+}
